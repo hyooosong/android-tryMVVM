@@ -5,12 +5,15 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.trymvvm.presentation.write.WriteDiaryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".WriteActivity">
+        tools:context=".presentation.write.WriteActivity">
 
         <TextView
             android:id="@+id/textView_write_title"
@@ -19,7 +22,7 @@
             android:layout_margin="16dp"
             android:text="제목"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="yyyy.MM.dd"
+            android:textSize="12sp"
+            app:createDate="@{viewModel.createDate}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/textView_write_title" />
 
@@ -38,6 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="10dp"
+            android:text="@={viewModel.title}"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_write_title" />
@@ -49,7 +55,7 @@
             android:layout_marginTop="16dp"
             android:text="내용"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/textView_write_title"
             app:layout_constraintTop_toBottomOf="@id/editText_write_title" />
 
@@ -57,7 +63,8 @@
             android:id="@+id/textView_write_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="00/000"
+            android:text="@{@string/diaryMaxLengthFormat(viewModel.content.length())}"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@id/textView_write_content"
             app:layout_constraintEnd_toEndOf="@id/textView_write_date" />
 
@@ -65,7 +72,10 @@
             android:id="@+id/editText_write_content"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:gravity="top|left"
             android:layout_marginVertical="10dp"
+            android:text="@={viewModel.content}"
+            android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@id/btn_write_complete"
             app:layout_constraintEnd_toEndOf="@id/textView_write_date"
             app:layout_constraintStart_toStartOf="@id/textView_write_title"
@@ -77,6 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="작성 완료"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/textView_write_date"
             app:layout_constraintStart_toStartOf="@id/textView_write_title" />

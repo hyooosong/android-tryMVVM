@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="diary"
+            type="com.example.trymvvm.domain.Diary" />
 
     </data>
 
@@ -18,7 +21,8 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="18sp"
+            android:text="@{diary.title}"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -31,11 +35,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="18sp"
+            android:textSize="14sp"
+            android:text="@{diary.content}"
+            android:maxLines="2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_title"
-            tools:text="내용" />
+            tools:text="@tools:sample/lorem/random" />
 
         <TextView
             android:id="@+id/textView_date"
@@ -43,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textSize="12sp"
+            app:createDate="@{diary.date}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_content"
@@ -51,10 +58,9 @@
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:background="@color/black"
+            android:background="#e3e3e3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginHorizontal="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_date"
             android:layout_marginVertical="4dp" />

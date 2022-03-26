@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TryMVVM</string>
+    <string name="diaryMaxLengthFormat">%d/500</string>
 </resources>
